@@ -38,11 +38,11 @@ Aspect，没错，的确是 “方面” 的意思。不过，华语传统
 
 ```
 == 给 'com.tangzhixiong.javaaop.DogImp@deb6432' 注入属性 ==
-属性注入：'name' = '坏🐶'
+属性注入：'name' = '坏🐶' (通过 setter）
 属性无注入：'property'
 == 给 'com.tangzhixiong.javaaop.DogImp@deb6432' 注入方法 ==
-方法注入：'setProperty' = '🐶'
-方法注入：'setProperty' = '🐶'
+方法注入：'setProperty' = '水陆两栖战士'
+方法注入：'setProperty' = '水陆两栖战士'
 方法无注入：'getProperty'
 方法无注入：'getProperty'
 方法无注入：'getName'
@@ -52,3 +52,12 @@ Aspect，没错，的确是 “方面” 的意思。不过，华语传统
 
 		成功拦截 'getProperty' 方法, 结束 
 ```
+
+## 小结
+
+-   一个类的 annotation 可以注解到属性（field）也可以注解到方法（method）
+-   注解为何生效？因为你多加了一层 indirection，解析了注解，包装了一下，所以注解有效
+-   从类上我们可以拿到 fields 和 methods，以及上面的注解
+-   获取注解的时候你要告诉 field 你要啥样的注解（注解类名称），它会给你返回一个注解类的对象
+-   这个对象的属性和值就是注解的 KEY=VALUE 键值对
+-   注入就是把这个注解信息（一个注解类的成员，包含这种注解的一切可能信息（有默认值）拿到，然后自己调用相应的函数来让使生效
