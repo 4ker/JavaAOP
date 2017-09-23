@@ -25,11 +25,11 @@ public class DogImp implements AnimalInterface {
 
     @Override
     public void say() {
-        System.out.println("Ð¡¹·:ÍôÍôÍôÍô.....");
+        System.out.println("小狗:汪汪汪汪.....");
     }
 
     @Override
-    @Seven(Property = "Ë®Â½Á½ÆÜÕ½Ê¿")
+    @Seven(Property = "水陆两栖战士")
     public void setProperty(String Property) {
         this.Property = Property;
     }

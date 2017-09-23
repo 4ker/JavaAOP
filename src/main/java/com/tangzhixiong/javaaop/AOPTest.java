@@ -7,6 +7,7 @@ import com.tangzhixiong.javaaop.imp.AnimalInterface;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
+// 如果注释掉下面的注解，可以直接运行 main 函数。
 @RunWith(BlockJUnit4ClassRunner.class)
 public class AOPTest {
 

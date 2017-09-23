@@ -9,8 +9,10 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD, ElementType.METHOD})
 public @interface Seven {
 
-    public String value() default "Ð¡ºÚ";
+    // for fields
+    String value() default "小黑";
 
-    public String Property() default "ÎÞÊôÐÔ";
+    // for methods
+    String Property() default "无属性";
 
 }
