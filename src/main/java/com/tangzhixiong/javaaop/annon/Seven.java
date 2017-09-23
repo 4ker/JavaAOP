@@ -1,15 +1,16 @@
-package proxy.annon;
+package com.tangzhixiong.javaaop.annon;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD,ElementType.METHOD})
+@Target({ElementType.FIELD, ElementType.METHOD})
 public @interface Seven {
-	
-	public String value() default "小黑";
-	
-	public String Property() default "无属性";
-	
+
+    public String value() default "脨隆潞脷";
+
+    public String Property() default "脦脼脢么脨脭";
+
 }
