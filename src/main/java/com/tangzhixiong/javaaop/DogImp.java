@@ -5,17 +5,17 @@ import com.tangzhixiong.javaaop.imp.AnimalInterface;
 
 public class DogImp implements AnimalInterface {
 
-    @Seven(value = "Lumia")
+//  @Seven，这个注解会注入默认的值，也就是"🐶"
+//  @Seven("坏🐶")，这个也等价，如果注解里面的 KEY=VALUE 没有 KEY，默认就是 value=VALUE。
+    @Seven(value = "坏🐶")
     private String name;
 
-    private String Property;
-
-    public DogImp() {
-    }
+    private String property;
 
     @Override
-    public void setName(String name) {
+    public DogImp setName(String name) {
         this.name = name;
+        return this;
     }
 
     @Override
@@ -24,18 +24,14 @@ public class DogImp implements AnimalInterface {
     }
 
     @Override
-    public void say() {
-        System.out.println("小狗:汪汪汪汪.....");
-    }
-
-    @Override
     @Seven(Property = "水陆两栖战士")
-    public void setProperty(String Property) {
-        this.Property = Property;
+    public DogImp setProperty(Object Property) {
+        this.property = (String)Property;
+        return this;
     }
 
     @Override
-    public void getProperty() {
-        System.out.println(this.name + this.Property);
+    public String getProperty() {
+        return this.property;
     }
 }

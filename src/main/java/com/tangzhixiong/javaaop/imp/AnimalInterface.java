@@ -1,18 +1,10 @@
 package com.tangzhixiong.javaaop.imp;
 
 public interface AnimalInterface {
-    // 设置名字
-    void setName(String name);
 
-    // 获取名字
+    <T extends AnimalInterface> T setName(String name);
     String getName();
 
-    // 叫声
-    void say();
-
-    // 获取栖性
-    void getProperty();
-
-    // 设置栖性
-    void setProperty(String Property);
+    Object getProperty();
+    <T extends AnimalInterface> T setProperty(Object Property);
 }

@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 public @interface Seven {
 
     // for fields
-    String value() default "小黑";
+    String value() default "🐶";
 
     // for methods
     String Property() default "无属性";

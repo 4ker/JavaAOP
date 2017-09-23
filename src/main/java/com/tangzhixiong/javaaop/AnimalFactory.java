@@ -3,55 +3,46 @@ package com.tangzhixiong.javaaop;
 import com.tangzhixiong.javaaop.annon.AnnoInjection;
 import com.tangzhixiong.javaaop.imp.AOPMethod;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 public class AnimalFactory {
 
-    /***
-     * 获取对象方法
-     * @param obj
-     * @return
-     */
     private static Object getAnimalBase(Object obj, AOPMethod method) {
-        // 获取代理对象
-        return Proxy.newProxyInstance(obj.getClass().getClassLoader(),
+        /*
+                public static Object newProxyInstance(ClassLoader loader,
+                                                      Class<?>[] interfaces,
+                                                      InvocationHandler h)
+         */
+        return Proxy.newProxyInstance(
+                obj.getClass().getClassLoader(),
                 obj.getClass().getInterfaces(),
                 new AOPHandle(AnnoInjection.getBean(obj), method));
+//                (proxy, method1, args) -> method1.invoke(AnnoInjection.getBean(proxy),args));
     }
 
-    /***
-     * 获取对象方法
-     * @param obj
-     * @return
-     */
     @SuppressWarnings("unchecked")
     public static <T> T getAnimal(Object obj, AOPMethod aopMethod) {
+        // 调用方法：AnimalInterface dog = AnimalFactory.getAnimal(new DogImp(), new AOPMethod() {...});
         return (T) getAnimalBase(obj, aopMethod);
     }
 
-    /***
-     * 获取对象方法
-     * @param className
-     * @return
-     */
     @SuppressWarnings("unchecked")
     public static <T> T getAnimal(String className, AOPMethod method) {
+        // 调用方法：AnimalInterface dog = AnimalFactory.getAnimal("com.tangzhixiong.javaaop.DogImp", new AOPMethod() {...}
         Object obj = null;
         try {
-            obj = getAnimalBase(Class.forName(className).newInstance(), method);
+            obj = getAnimal(Class.forName(className).newInstance(), method);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return (T) obj;
     }
 
-    /***
-     * 获取对象方法
-     * @param clz
-     * @return
-     */
     @SuppressWarnings("unchecked")
-    public static <T> T getAnimal(Class<?> clz, AOPMethod method) {
+    public static <T> T getAnimal(Class<? extends T> clz, AOPMethod method) {
+        // 调用方法： AnimalInterface dog = AnimalFactory.getAnimal(DogImp.class, new AOPMethod() {...});
         Object obj = null;
         try {
             obj = getAnimalBase(clz.newInstance(), method);

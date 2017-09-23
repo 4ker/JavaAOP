@@ -6,12 +6,11 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 public class AOPHandle implements InvocationHandler {
-    // 保存对象
+    private Object object;
     private AOPMethod method;
-    private Object o;
 
-    public AOPHandle(Object o, AOPMethod method) {
-        this.o = o;
+    public AOPHandle(Object object, AOPMethod method) {
+        this.object = object;
         this.method = method;
     }
 
@@ -27,11 +26,8 @@ public class AOPHandle implements InvocationHandler {
      **/
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        Object ret = null;
-        // 修改的地方在这里哦
         this.method.before(proxy, method, args);
-        ret = method.invoke(o, args);
-        // 修改的地方在这里哦
+        Object ret = method.invoke(object, args);
         this.method.after(proxy, method, args);
         return ret;
     }

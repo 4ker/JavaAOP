@@ -36,6 +36,19 @@ Aspect，没错，的确是 “方面” 的意思。不过，华语传统
 
 ---
 
-Test 是没有成功注入的。
+```
+== 给 'com.tangzhixiong.javaaop.DogImp@deb6432' 注入属性 ==
+属性注入：'name' = '坏🐶'
+属性无注入：'property'
+== 给 'com.tangzhixiong.javaaop.DogImp@deb6432' 注入方法 ==
+方法注入：'setProperty' = '🐶'
+方法注入：'setProperty' = '🐶'
+方法无注入：'getProperty'
+方法无注入：'getProperty'
+方法无注入：'getName'
+方法无注入：'setName'
+方法无注入：'setName'
+		成功拦截 'getProperty' 方法, 启动 
 
-AOPTest 是成功注入的。
+		成功拦截 'getProperty' 方法, 结束 
+```
