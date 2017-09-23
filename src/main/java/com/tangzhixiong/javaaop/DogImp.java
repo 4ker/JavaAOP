@@ -5,7 +5,6 @@ import com.tangzhixiong.javaaop.imp.AnimalInterface;
 
 public class DogImp implements AnimalInterface {
 
-
 //  @Seven，这个注解会注入默认的值，也就是"🐶"
 //  @Seven("坏🐶")，这个也等价，如果注解里面的 KEY=VALUE 没有 KEY，默认就是 value=VALUE。
     @Seven(value = "坏🐶")
